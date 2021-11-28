@@ -5,7 +5,7 @@ mkdir tempdir/static
 
 cp test_app.py tempdir/.
 cp -r templates/* tempdir/templates/.
-cp -r templates/* tempdir/static/.
+cp -r static/* tempdir/static/.
 
 #Création du fichier Dockerfile 
 echo "FROM python" > tempdir/Dockerfile
@@ -21,7 +21,7 @@ cd tempdir
 docker build -t testapp .
  
 #lancement du container  testrunning avec l'image testapp
-docker run -t -d -p 5050:5050 --name testrunning testapp
+docker run -t -d -u root -p 5050:5050 --name testrunning testapp
  
 #Tester si le container a bien démarré
 docker container ls
